@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/gabrielmeloc22/faro-bot#readme",
   "devDependencies": {
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.30.3",
     "@typescript-eslint/parser": "^5.30.3",
