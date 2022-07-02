@@ -1,55 +1,22 @@
-import { MessageActionRow, MessageButton } from "discord.js";
-
 import { ButtonInteraction } from "discord.js/typings/index";
+import { RenderCantadaType } from "../../@types/discord";
+import { renderCantada } from "./components";
 
 export default {
   name: "cantada",
   async execute(interaction: ButtonInteraction) {
-    console.log("ta aq");
-    const isTargetUser = !!interaction.message.embeds[0].fields?.find(
+    const isTargetUser = !!interaction?.message?.embeds?.[0]?.fields?.find(
       (field) => field.value == `<@${interaction.user.id}>`
     );
 
     if (!isTargetUser) {
       await interaction.reply({
-        content: "Você não é o(a) pretendente.",
+        content: "Você não é o(a) pretendente. CAVALO!",
         ephemeral: true,
       });
       return;
     }
 
-    if (interaction.customId === "accept") {
-      await cantadaAccepted(interaction);
-    } else if (interaction.customId === "decline") {
-      await cantadaDeclined(interaction);
-    }
+    await renderCantada(interaction, interaction.customId as RenderCantadaType);
   },
-};
-
-const cantadaAccepted = async (interaction: ButtonInteraction) => {
-  await interaction.update({
-    components: [
-      new MessageActionRow().addComponents(
-        new MessageButton()
-          .setCustomId("accept")
-          .setLabel("Deu namoro💘")
-          .setStyle("SUCCESS")
-          .setDisabled()
-      ),
-    ],
-  });
-};
-
-const cantadaDeclined = async (interaction: ButtonInteraction) => {
-  await interaction.update({
-    components: [
-      new MessageActionRow().addComponents(
-        new MessageButton()
-          .setCustomId("accept")
-          .setLabel("Hoje não, Faro 🥶")
-          .setStyle("DANGER")
-          .setDisabled()
-      ),
-    ],
-  });
 };
