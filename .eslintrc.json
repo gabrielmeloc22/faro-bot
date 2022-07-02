@@ -1,11 +1,26 @@
 {
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "env": {
-    "node": true,
-    "es6": true
+    "es2020": true,
+    "node": true
   },
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2021
+    "ecmaVersion": 11,
+    "sourceType": "module"
   },
-  "rules": {}
+  "plugins": ["prettier", "@typescript-eslint"],
+  "ignorePatterns": "dist",
+  "rules": {
+    "prettier/prettier": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "args": "after-used", "argsIgnorePattern": "^next$" }
+    ],
+    "@typescript-eslint/ban-ts-comment": "warn"
+  }
 }

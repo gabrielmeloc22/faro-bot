@@ -1,5 +1,5 @@
-import { ClientWithCommands } from '../../@types/discord';
-import commands from '../../commands';
+import { ClientWithCommands } from "../../@types/discord";
+import commands from "../../commands";
 
 export const importCommands = (client: ClientWithCommands) => {
   Object.entries(commands).forEach(([name, command]) => {

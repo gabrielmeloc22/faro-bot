@@ -1,7 +1,7 @@
 export default {
-  name: 'ready',
+  name: "ready",
   once: true,
   execute() {
-    console.log('Dança gatinho, dança... ELE GOSTA');
+    console.log("Dança gatinho, dança... ELE GOSTA");
   },
 };

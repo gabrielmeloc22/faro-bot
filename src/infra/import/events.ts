@@ -1,5 +1,5 @@
-import { ClientWithCommands, DiscordEvent } from '../../@types/discord';
-import events from '../../events';
+import { ClientWithCommands, DiscordEvent } from "../../@types/discord";
+import events from "../../events";
 
 export const importEvents = (client: ClientWithCommands) => {
   Object.values(events).forEach((event: DiscordEvent) => {

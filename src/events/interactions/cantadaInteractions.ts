@@ -5,7 +5,7 @@ import { ButtonInteraction } from "discord.js/typings/index";
 export default {
   name: "cantada",
   async execute(interaction: ButtonInteraction) {
-    console.log('ta aq')
+    console.log("ta aq");
     const isTargetUser = !!interaction.message.embeds[0].fields?.find(
       (field) => field.value == `<@${interaction.user.id}>`
     );

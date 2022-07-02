@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "lint": "eslint --fix --ext .js,.ts,.json ."
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,12 @@
   "homepage": "https://github.com/gabrielmeloc22/faro-bot#readme",
   "devDependencies": {
     "@types/node": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.3",
+    "@typescript-eslint/parser": "^5.30.3",
     "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-prettier": "^0.0.0-empty",
     "prettier": "^2.7.1",
     "ts-node": "^10.8.1",
