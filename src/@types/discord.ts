@@ -9,3 +9,5 @@ export interface DiscordEvent {
 export interface ClientWithCommands extends Client {
   commands: Collection<unknown, any>;
 }
+
+export type RenderCantadaType = "accept" | "decline";
