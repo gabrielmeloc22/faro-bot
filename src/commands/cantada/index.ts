@@ -46,6 +46,7 @@ const execute = async (interaction: CommandInteraction) => {
     body: cantada,
     author,
     target,
+    discordId: message?.id,
   });
 
   return message;
