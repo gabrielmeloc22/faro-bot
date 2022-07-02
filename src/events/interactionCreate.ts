@@ -1,4 +1,4 @@
-import { client } from '../app';
+import { client } from '../infra/app';
 import { Interaction } from 'discord.js/typings/index';
 import interactions from './interactions';
 

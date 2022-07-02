@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Vai dar namoro?",
   "scripts": {
-    "dev": "ts-node-dev src/app.ts",
+    "dev": "ts-node-dev src/index.ts",
     "build": "tsc",
-    "start": "node dist/app.js"
+    "start": "node dist/index.js"
   },
   "repository": {
     "type": "git",
