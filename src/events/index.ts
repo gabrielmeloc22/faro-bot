@@ -1,5 +1,5 @@
-import interactionCreate from './interactionCreate';
-import ready from './ready';
+import interactionCreate from "./interactionCreate";
+import ready from "./ready";
 
 export default {
   interactionCreate,

@@ -1,4 +1,4 @@
-import { Client, Collection, Interaction } from 'discord.js';
+import { Client, Collection, Interaction } from "discord.js";
 
 export interface DiscordEvent {
   name: string;

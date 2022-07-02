@@ -1,8 +1,8 @@
-import 'dotenv/config';
-import { Client, Intents, Collection } from 'discord.js';
-import { ClientWithCommands } from '../@types/discord';
-import { importCommands } from './import/commands';
-import { importEvents } from './import/events';
+import "dotenv/config";
+import { Client, Intents, Collection } from "discord.js";
+import { ClientWithCommands } from "../@types/discord";
+import { importCommands } from "./import/commands";
+import { importEvents } from "./import/events";
 
 const client = new Client({
   intents: [

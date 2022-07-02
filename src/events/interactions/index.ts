@@ -1,3 +1,3 @@
-import cantadaInteractions from './cantadaInteractions';
+import cantadaInteractions from "./cantadaInteractions";
 
 export default { cantadaInteractions };

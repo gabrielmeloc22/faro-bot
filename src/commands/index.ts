@@ -1,5 +1,5 @@
-import cantada from './cantada';
-import catchphrase from './catchphrase';
+import cantada from "./cantada";
+import catchphrase from "./catchphrase";
 
 export default {
   cantada,

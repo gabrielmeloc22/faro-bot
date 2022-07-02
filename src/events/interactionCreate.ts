@@ -1,9 +1,9 @@
-import { client } from '../infra/app';
-import { Interaction } from 'discord.js/typings/index';
-import interactions from './interactions';
+import { client } from "../infra/app";
+import { Interaction } from "discord.js/typings/index";
+import interactions from "./interactions";
 
 export default {
-  name: 'interactionCreate',
+  name: "interactionCreate",
   async execute(interaction: Interaction) {
     if (interaction.isCommand()) {
       const command = client.commands.get(interaction.commandName);
