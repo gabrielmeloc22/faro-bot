@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { CommandInteraction } from "discord.js";
-import { buttons } from "./cantada/buttons";
-import { cantadaEmbed } from "./cantada/embed";
+import { buttons } from "./buttons";
+import { cantadaEmbed } from "./embed";
 
 const data = new SlashCommandBuilder()
   .setName("cantada")
