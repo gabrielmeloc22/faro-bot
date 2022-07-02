@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { CommandInteraction } from "discord.js";
+import { create as createUser } from "../../services/user/create";
 import { buttons } from "./buttons";
 import { cantadaEmbed } from "./embed";
 
@@ -22,6 +23,12 @@ const execute = async (interaction: CommandInteraction) => {
   await interaction.reply({
     content: "CAVALO",
     ephemeral: true,
+  });
+
+  await createUser({
+    discordId: interaction.user.id,
+    name: interaction.user.username,
+    bio: "teste",
   });
 
   const message = await interaction.channel?.send({
