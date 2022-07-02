@@ -1,6 +1,7 @@
 import { ButtonInteraction } from "discord.js/typings/index";
 import { RenderCantadaType } from "../../@types/discord";
 import { Cantada } from "../../model/cantada";
+import { createPrivateChannel } from "../../services/discord/createPrivateChannel";
 import { renderCantada } from "./components";
 
 const cantadaStatusByLabel: Record<string, string> = {
@@ -26,11 +27,14 @@ export default {
     const status = cantadaStatusByLabel[interaction?.component?.label || ""];
     if (!status) return;
 
-    await Cantada.updateOne(
+    const updatedCantada = await Cantada.findOneAndUpdate(
       { discordId: interaction?.message?.id },
       { status }
     );
 
+    if (updatedCantada && status === "ACCEPTED") {
+      await createPrivateChannel(updatedCantada.id, interaction);
+    }
     await renderCantada(interaction, interaction.customId as RenderCantadaType);
   },
 };
