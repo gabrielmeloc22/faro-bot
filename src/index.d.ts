@@ -5,4 +5,10 @@ declare global {
       DISCORD_TOKEN: string;
     }
   }
+
+  declare module "discord.js" {
+    interface Client {
+      commands: Collection<unknown, any>;
+    }
+  }
 }
