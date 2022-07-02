@@ -1,6 +1,12 @@
 import { ButtonInteraction } from "discord.js/typings/index";
 import { RenderCantadaType } from "../../@types/discord";
+import { Cantada } from "../../model/cantada";
 import { renderCantada } from "./components";
+
+const cantadaStatusByLabel: Record<string, string> = {
+  "Aceitar 💘": "ACCEPTED",
+  "Rejeitar 😭": "DECLINED",
+};
 
 export default {
   name: "cantada",
@@ -16,6 +22,14 @@ export default {
       });
       return;
     }
+
+    const status = cantadaStatusByLabel[interaction?.component?.label || ""];
+    if (!status) return;
+
+    await Cantada.updateOne(
+      { discordId: interaction?.message?.id },
+      { status }
+    );
 
     await renderCantada(interaction, interaction.customId as RenderCantadaType);
   },
