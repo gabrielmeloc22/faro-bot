@@ -1,6 +1,7 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { CommandInteraction } from "discord.js";
-import { create as createUser } from "../../services/user/create";
+import { CommandInteraction, User } from "discord.js";
+import { Cantada } from "../../model/cantada";
+import { getOrCreate as getOrCreateUser } from "../../services/user/getOrCreate";
 import { buttons } from "./buttons";
 import { cantadaEmbed } from "./embed";
 
@@ -16,24 +17,35 @@ const data = new SlashCommandBuilder()
 
 const execute = async (interaction: CommandInteraction) => {
   const cantada = interaction.options.getString("cantada");
-  const { id: userId } = interaction.options.getUser("user") ?? {};
+  const user: User | null = interaction.options.getUser("user");
 
-  if (!cantada || !userId) return;
+  if (!cantada || !user) return;
 
   await interaction.reply({
     content: "CAVALO",
     ephemeral: true,
   });
 
-  await createUser({
-    discordId: interaction.user.id,
-    name: interaction.user.username,
-    bio: "teste",
-  });
+  const [author, target] = await Promise.all([
+    getOrCreateUser({
+      discordId: interaction.user.id,
+      name: interaction.user.username,
+    }),
+    getOrCreateUser({
+      discordId: user.id,
+      name: user.username,
+    }),
+  ]);
 
   const message = await interaction.channel?.send({
-    embeds: [cantadaEmbed(cantada, userId)],
+    embeds: [cantadaEmbed(cantada, user.id)],
     components: [buttons],
+  });
+
+  await Cantada.create({
+    body: cantada,
+    author,
+    target,
   });
 
   return message;
