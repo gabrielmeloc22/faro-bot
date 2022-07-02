@@ -2,9 +2,10 @@ import { MessageActionRow, MessageButton } from "discord.js";
 
 import { ButtonInteraction } from "discord.js/typings/index";
 
-module.exports = {
+export default {
   name: "cantada",
   async execute(interaction: ButtonInteraction) {
+    console.log('ta aq')
     const isTargetUser = !!interaction.message.embeds[0].fields?.find(
       (field) => field.value == `<@${interaction.user.id}>`
     );
