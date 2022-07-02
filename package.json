@@ -2,22 +2,23 @@
   "name": "faro-bot",
   "version": "1.0.0",
   "description": "Vai dar namoro?",
-  "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev src/app.ts",
-    "build": "ts-node-dev src/deployCommands.ts"
+    "dev": "ts-node-dev src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NicolasLopes7/faro-bot.git"
+    "url": "git+https://github.com/gabrielmeloc22/faro-bot.git"
   },
   "author": "Nicolas Lopes. Gabriel Melo e Pedro Costa",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/NicolasLopes7/faro-bot/issues"
+    "url": "https://github.com/gabrielmeloc22/faro-bot/issues"
   },
-  "homepage": "https://github.com/NicolasLopes7/faro-bot#readme",
+  "homepage": "https://github.com/gabrielmeloc22/faro-bot#readme",
   "devDependencies": {
+    "@types/node": "^18.0.0",
     "eslint": "^8.18.0",
     "eslint-prettier": "^0.0.0-empty",
     "prettier": "^2.7.1",
@@ -28,7 +29,6 @@
   "dependencies": {
     "@discordjs/builders": "^0.15.0",
     "@discordjs/rest": "^0.5.0",
-    "@types/node": "^18.0.0",
     "discord-api-types": "^0.36.0",
     "discord.js": "^13.8.1",
     "dotenv": "^16.0.1",

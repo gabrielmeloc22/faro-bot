@@ -1,5 +1,10 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { CommandInteraction, MessageEmbed } from "discord.js";
+import {
+  CommandInteraction,
+  MessageActionRow,
+  MessageButton,
+  MessageEmbed,
+} from "discord.js";
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -18,16 +23,39 @@ module.exports = {
     const cantada = interaction.options.getString("cantada");
     const userId = interaction.options.getUser("user")?.id;
 
-    await interaction.channel?.send({
-      embeds: [cantadaEmbed(cantada!, userId!)],
+    await interaction.reply({
+      content: "CAVALO",
+      ephemeral: true,
     });
+
+    const message = await interaction.channel?.send({
+      embeds: [cantadaEmbed(cantada!, userId!)],
+      components: [buttons],
+    });
+
+    return message;
   },
 };
 
 const cantadaEmbed = (cantada: string, userId: string) => {
   return new MessageEmbed()
-    .setColor("BLURPLE")
+    .setColor("DARK_VIVID_PINK")
     .setTitle("Vai dar namoro?")
-    .setFields({ name: "A cantada", value: cantada })
+    .setFields(
+      { name: "A cantada", value: cantada },
+      { name: "O(a) pretendente", value: `<@${userId}>` }
+    )
     .setImage("https://c.tenor.com/gkak5SLi5mYAAAAM/torcendo-sorte.gif");
 };
+
+const buttons = new MessageActionRow().addComponents(
+  new MessageButton()
+    .setCustomId("accept")
+    .setLabel("Aceitar 💘")
+    .setStyle("SECONDARY"),
+
+  new MessageButton()
+    .setCustomId("decline")
+    .setLabel("Rejeitar 😭")
+    .setStyle("SECONDARY")
+);
