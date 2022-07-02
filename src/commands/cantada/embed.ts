@@ -8,5 +8,5 @@ export const cantadaEmbed = (cantada: string, userId: string) => {
       { name: "A cantada", value: cantada },
       { name: "O(a) pretendente", value: `<@${userId}>` }
     )
-    .setImage("https://c.tenor.com/gkak5SLi5mYAAAAM/torcendo-sorte.gif");
+    .setImage("https://c.tenor.com/wyV8J09HxnwAAAAC/ofjiyu-rodrigo-faro.gif");
 };
