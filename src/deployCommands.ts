@@ -10,7 +10,6 @@ const rest = new REST({ version: "9" }).setToken(
 
 const commandsData = Object.values(commands).map(({ data }) => data.toJSON());
 
-console.log(commandsData);
 rest
   .put(Routes.applicationCommands(process.env.CLIENT_ID as string), {
     body: commandsData,

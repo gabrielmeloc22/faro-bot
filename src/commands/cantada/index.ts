@@ -21,11 +21,6 @@ const execute = async (interaction: CommandInteraction) => {
 
   if (!cantada || !user) return;
 
-  await interaction.reply({
-    content: "CAVALO",
-    ephemeral: true,
-  });
-
   const [author, target] = await Promise.all([
     getOrCreateUser({
       discordId: interaction.user.id,
@@ -36,6 +31,19 @@ const execute = async (interaction: CommandInteraction) => {
       name: user.username,
     }),
   ]);
+
+  if (author?.discordId === user?.id) {
+    await interaction.reply({
+      content: "É o que o Faro sempre diz: amor próprio é o que importa 🥰",
+      ephemeral: true,
+    });
+    return;
+  }
+
+  await interaction.reply({
+    content: "CAVALO",
+    ephemeral: true,
+  });
 
   const message = await interaction.channel?.send({
     embeds: [cantadaEmbed(cantada, user.id)],

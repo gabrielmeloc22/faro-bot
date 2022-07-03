@@ -36,5 +36,7 @@ export default {
       await createPrivateChannel(updatedCantada.id, interaction);
     }
     await renderCantada(interaction, interaction.customId as RenderCantadaType);
+
+    await Cantada.findOneAndRemove({ discordId: interaction.message.id });
   },
 };
