@@ -33,7 +33,7 @@ export const renderCantada = async (
     { discordId: interaction.message.id },
     "author body"
   );
-  const user = await User.findOne({ _id: cantadaInfo?.author });
+  const user = await User.findOne({ _id: cantadaInfo?.target });
 
   const updatedEmbed = new MessageEmbed()
     .setColor("DARK_VIVID_PINK")
