@@ -29,10 +29,10 @@ export const renderCantada = async (
 ) => {
   const props = propsByType[type];
 
-  const cantadaInfo = await Cantada.findOne(
-    { discordId: interaction.message.id },
-    "author body"
-  );
+  const cantadaInfo = await Cantada.findOne({
+    discordId: interaction.message.id,
+  }).lean();
+
   const user = await User.findOne({ _id: cantadaInfo?.target });
 
   const updatedEmbed = new MessageEmbed()
