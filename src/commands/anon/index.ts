@@ -39,11 +39,6 @@ const execute = async (interaction: CommandInteraction) => {
     return;
   }
 
-  await interaction.reply({
-    content: "CAVALO",
-    ephemeral: true,
-  });
-
   const message = await interaction.channel?.send({
     embeds: [cantadaEmbed(cantada, user.id)],
   });
