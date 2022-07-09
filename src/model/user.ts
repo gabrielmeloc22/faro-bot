@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema(
     discordId: { type: String, unique: true, required: true },
     bio: { type: String, default: "" },
     allowCantada: { type: Boolean, default: true },
+    commandBanned: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
